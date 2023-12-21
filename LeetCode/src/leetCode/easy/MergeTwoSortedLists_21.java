@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.easy;
 
 public class MergeTwoSortedLists_21 {
 	public class ListNode {
