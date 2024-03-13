@@ -79,7 +79,8 @@ public class M0146_LRUCache {
 				} else {
 					node.next.prev = node.prev;
 				}
-				
+
+				// *這邊不指成null的話，會影響下一次add，因為此node還有作用
 				node.prev = null;
 				node.next = null;
 			}
