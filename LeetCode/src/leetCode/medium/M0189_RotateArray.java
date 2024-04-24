@@ -1,6 +1,6 @@
 package leetCode.medium;
 
-public class M189_RotateArray {
+public class M0189_RotateArray {
 	public static void printNums(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			System.out.print(nums[i] + ", ");
