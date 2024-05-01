@@ -101,7 +101,7 @@ public class M0567_PermutationinString {
 		for (char c : s1.toCharArray()) {
 			count1[c - 'a']++;
 		}
-		
+
 		int[] count2 = new int[26];
 		int i = 0;
 		while (i < s1.length()) {
@@ -118,6 +118,28 @@ public class M0567_PermutationinString {
 			count2[s2.charAt(i++) - 'a']++;
 
 			if (Arrays.equals(count1, count2)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	// solution 4: sorting
+	public static boolean checkInclusion4(String s1, String s2) {
+		if (s1.length() > s2.length()) {
+			return false;
+		}
+
+		char[] s1Arr = s1.toCharArray();
+		Arrays.sort(s1Arr);
+
+		int len = s1.length();
+		for (int i = 0; i <= s2.length() - len; i++) {
+			char[] s2Arr = s2.substring(i, i + len).toCharArray();
+			Arrays.sort(s2Arr);
+
+			if (Arrays.equals(s1Arr, s2Arr)) {
 				return true;
 			}
 		}
@@ -147,18 +169,32 @@ public class M0567_PermutationinString {
 //		System.out.println(checkInclusion2("ccabf", "cfcbca"));// true
 //		System.out.println(checkInclusion2("ccabf", "cfcbcca"));// false
 
-		System.out.println(checkInclusion3("ab", "eidbaooo")); // true
-		System.out.println(checkInclusion3("ab", "eidboaoo")); // false
-		System.out.println(checkInclusion3("dinitrophenylhydrazine", "acetylphenylhydrazine")); // false
-		System.out.println(checkInclusion3(
+//		System.out.println(checkInclusion3("ab", "eidbaooo")); // true
+//		System.out.println(checkInclusion3("ab", "eidboaoo")); // false
+//		System.out.println(checkInclusion3("dinitrophenylhydrazine", "acetylphenylhydrazine")); // false
+//		System.out.println(checkInclusion3(
+//				"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdef",
+//				"bcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefg"));
+//		System.out.println(checkInclusion3("adc", "dfcda")); // true
+//		System.out.println(checkInclusion3("adc", "dcda"));// true
+//		System.out.println(checkInclusion3("adc", "dcdda"));// false
+//		System.out.println(checkInclusion3("adc", "cdc"));// false
+//		System.out.println(checkInclusion3("adcf", "fcdcfa"));// true
+//		System.out.println(checkInclusion3("ccabf", "cfcbca"));// true
+//		System.out.println(checkInclusion3("ccabf", "cfcbcca"));// false
+
+		System.out.println(checkInclusion4("ab", "eidbaooo")); // true
+		System.out.println(checkInclusion4("ab", "eidboaoo")); // false
+		System.out.println(checkInclusion4("dinitrophenylhydrazine", "acetylphenylhydrazine")); // false
+		System.out.println(checkInclusion4(
 				"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdef",
 				"bcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefg"));
-		System.out.println(checkInclusion3("adc", "dfcda")); // true
-		System.out.println(checkInclusion3("adc", "dcda"));// true
-		System.out.println(checkInclusion3("adc", "dcdda"));// false
-		System.out.println(checkInclusion3("adc", "cdc"));// false
-		System.out.println(checkInclusion3("adcf", "fcdcfa"));// true
-		System.out.println(checkInclusion3("ccabf", "cfcbca"));// true
-		System.out.println(checkInclusion3("ccabf", "cfcbcca"));// false
+		System.out.println(checkInclusion4("adc", "dfcda")); // true
+		System.out.println(checkInclusion4("adc", "dcda"));// true
+		System.out.println(checkInclusion4("adc", "dcdda"));// false
+		System.out.println(checkInclusion4("adc", "cdc"));// false
+		System.out.println(checkInclusion4("adcf", "fcdcfa"));// true
+		System.out.println(checkInclusion4("ccabf", "cfcbca"));// true
+		System.out.println(checkInclusion4("ccabf", "cfcbcca"));// false
 	}
 }
