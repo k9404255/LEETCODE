@@ -44,6 +44,7 @@ public class M0384_ShuffleanArray {
 		}
 	}
 
+	// 費雪－葉慈洗牌（Fisher–Yates Shuffle）演算法即是相當經典、常見的洗牌演算法
 	static class Solution2 {
 		private int[] originalNums;
 		private Random rand;
