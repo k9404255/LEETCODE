@@ -3,6 +3,7 @@ package leetCode.medium;
 import java.util.Arrays;
 import java.util.Random;
 
+// https://home.gamer.com.tw/artwork.php?sn=5298818
 public class M0384_ShuffleanArray {
 	public static void printNums(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
@@ -58,7 +59,7 @@ public class M0384_ShuffleanArray {
 
 		public int[] shuffle() {
 			int[] shuffle = originalNums.clone();
-			
+
 			// suffle the nums (index)nums.length-1 to 0th index
 			for (int i = originalNums.length - 1; i > 0; i--) {
 				int index = rand.nextInt(i + 1);
@@ -67,7 +68,7 @@ public class M0384_ShuffleanArray {
 				shuffle[i] = shuffle[index];
 				shuffle[index] = temp;
 			}
-			
+
 			return shuffle;
 		}
 	}
